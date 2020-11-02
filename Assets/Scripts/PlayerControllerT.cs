@@ -20,6 +20,9 @@ public class PlayerControllerT : MonoBehaviour
 
     private float mouseX;
 
+    [Range(10f, 100f)]
+    public float mouseSensitivity = 30f;
+
     #endregion
 
     // Start is called before the first frame update
@@ -34,7 +37,7 @@ public class PlayerControllerT : MonoBehaviour
         xAxis = Input.GetAxis("Horizontal"); // A & D
         zAxis = Input.GetAxis("Vertical");  // W & S
 
-        mouseX = Input.mousePosition.x;
+        mouseX = Input.GetAxis("Mouse X");
 
         if (Input.GetButtonDown("Jump") && !isJumping)
         {
@@ -72,6 +75,7 @@ public class PlayerControllerT : MonoBehaviour
 
     private void RotatePlayer()
     {
-        transform.localRotation = Quaternion.Euler(0f, mouseX, 0f);
+        //transform.localRotation = Quaternion.Euler(0f, mouseX, 0f);
+        transform.RotateAround(transform.position, Vector3.up * mouseX, Time.fixedDeltaTime * mouseSensitivity);
     }
 }
