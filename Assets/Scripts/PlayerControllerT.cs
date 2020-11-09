@@ -16,9 +16,6 @@ public class PlayerControllerT : MonoBehaviour
 
     private Rigidbody playerBody;
 
-    //mouse X Axis
-    private float mouseX;
-
     //Keyboard Axes
     private float xAxis, zAxis;
 
@@ -47,7 +44,7 @@ public class PlayerControllerT : MonoBehaviour
         zInput = zAxis * transform.up;
 
         //Mouse Input
-        mouseX = Input.GetAxis("Mouse X");
+       // mouseX = Input.GetAxis("Mouse X");
 
         //Check for jumping
         if (Input.GetButtonDown("Jump") && !isJumping)
@@ -56,10 +53,10 @@ public class PlayerControllerT : MonoBehaviour
         }
 
         //Check to rotate camera
-        if(Input.GetMouseButton(1))
+       /* if(Input.GetMouseButton(1))
         {
             RotatePlayer();
-        }
+        }*/
     }
 
     private void FixedUpdate()
@@ -94,8 +91,8 @@ public class PlayerControllerT : MonoBehaviour
     }
 
     //Rotates the player's transform
-    private void RotatePlayer()
+  /*  private void RotatePlayer()
     {
         transform.RotateAround(transform.position, Vector3.up * mouseX, Time.fixedDeltaTime * mouseSensitivity);
-    }
+    }*/
 }
