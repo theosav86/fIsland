@@ -22,6 +22,9 @@ public class PlayerControllerT : MonoBehaviour
     //Keyboard Axes
     private float xAxis, zAxis;
 
+    private Vector3 xInput, zInput = new Vector3();
+
+
     [Range(10f, 100f)]
     public float mouseSensitivity = 30f;
 
@@ -38,7 +41,10 @@ public class PlayerControllerT : MonoBehaviour
     {
         //Player Input WASD
         xAxis = Input.GetAxis("Horizontal"); 
-        zAxis = Input.GetAxis("Vertical");  
+        zAxis = Input.GetAxis("Vertical");
+
+        xInput = xAxis * transform.right;
+        zInput = zAxis * transform.up;
 
         //Mouse Input
         mouseX = Input.GetAxis("Mouse X");
@@ -58,7 +64,11 @@ public class PlayerControllerT : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Vector3 movementVector = new Vector3(xAxis, 0f, zAxis);
+        Vector3 movementVector = xInput + zInput;
+
+        movementVector.y = playerBody.velocity.y;
+
+        movementVector.Normalize();
 
         Vector3 finalVelocity = movementVector * moveSpeed * Time.fixedDeltaTime;
 
