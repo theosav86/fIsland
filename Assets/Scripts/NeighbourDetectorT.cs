@@ -10,14 +10,13 @@ public class NeighbourDetectorT : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("I HAVE A NEIGHBOUR");
-        TileT neighbourTile = other.GetComponent<TileT>();
+        TileT neighbourTile = other.GetComponentInParent<TileT>();
 
 
         if(neighbourTile != null)
         {
             hasNeighbour = true;
-            Debug.Log("I HAVE A NEIGHBOUR");
+           // Debug.Log("I HAVE A NEIGHBOUR");
 
             detectedTile = neighbourTile;
         }

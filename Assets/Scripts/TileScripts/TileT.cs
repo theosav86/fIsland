@@ -27,10 +27,6 @@ public class TileT : MonoBehaviour
 
     #endregion
 
-    public virtual void Start()
-    {
-    }
-
     public void FlipTile(bool isFlooding)
     {
         if(isFlooding)
@@ -57,6 +53,8 @@ public class TileT : MonoBehaviour
     {
         for (int i = 0; i < neighbourDetectors.Length; i++)
         {
+            Debug.Log(neighbourDetectors[i].detectedTile);
+
             if (neighbourDetectors[i].detectedTile != null)
             {
                 neighbours.Add(neighbourDetectors[i].detectedTile);

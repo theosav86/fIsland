@@ -5,28 +5,17 @@ using UnityEngine;
 public class GoldGate : TileT
 {
 
-    public override void Start()
+    public void Start()
     {
-        
+        DetectNeighbours();
     }
 
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.U))
-        {
-            DetectNeighbours();
-        }
     }
 
     public override void DetectNeighbours()
     {
-        
-        for (int i = 0; i < neighbourDetectors.Length; i++)
-        {
-            if (neighbourDetectors[i].detectedTile != null)
-            {
-                neighbours.Add(neighbourDetectors[i].detectedTile);
-            }
-        }
+        base.DetectNeighbours();
     }
 }

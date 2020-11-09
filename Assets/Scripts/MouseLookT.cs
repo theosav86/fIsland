@@ -37,7 +37,7 @@ public class MouseLookT : MonoBehaviour
         
         if(Input.GetMouseButton(1))
         {
-           
+            transform.LookAt(playerBody);
             transform.RotateAround(playerBody.position, Vector3.up, mouseX * sensitivity * Time.deltaTime);
         }
         else
@@ -47,8 +47,8 @@ public class MouseLookT : MonoBehaviour
 
         if(Input.GetMouseButtonUp(1))
         {
-            //playerBody.transform.rotation.loo
             transform.localPosition = cameraOriginalPosition;
+            transform.LookAt(playerBody);
         }
 
     }
