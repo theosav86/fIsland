@@ -65,8 +65,6 @@ public class PlayerControllerT : MonoBehaviour
 
         movementVector.y = playerBody.velocity.y;
 
-        movementVector.Normalize();
-
         Vector3 finalVelocity = movementVector * moveSpeed * Time.fixedDeltaTime;
 
         //Move the player
