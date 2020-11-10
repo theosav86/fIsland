@@ -2,12 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-
-
-
-public class PlayerT : MonoBehaviour
+public class CharacterT : MonoBehaviour
 {
-
     #region VARIABLES
     public enum Role { PILOT, ENGINEER, EXPLORER, NAVIGATOR, MESSENGER, DIVER }
 
@@ -24,5 +20,4 @@ public class PlayerT : MonoBehaviour
     public TileT startingTile;
 
     #endregion
-
 }

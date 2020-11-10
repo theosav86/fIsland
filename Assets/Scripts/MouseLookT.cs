@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class MouseLookT : MonoBehaviour
 {
+    #region VARIABLES
+
     public float mouseX;
     public float mouseY;
     public float sensitivity = 100f;
@@ -13,21 +15,27 @@ public class MouseLookT : MonoBehaviour
     public Quaternion cameraOriginalRotation;
     private Vector3 cameraOriginalPosition;
 
+    #endregion
+
     // Start is called before the first frame update
     void Start()
     {
-        Cursor.lockState = CursorLockMode.Locked;
 
         cameraOriginalRotation = transform.rotation; 
 
         cameraOriginalPosition = transform.localPosition;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
         mouseX = Input.GetAxis("Mouse X") * sensitivity * Time.deltaTime;
         mouseY = Input.GetAxis("Mouse Y") * sensitivity * Time.deltaTime;
+    }
+
+    // Update is called once per frame
+    void FixedUpdate()
+    {
+        
 
         //xRotation -= mouseY;
 
@@ -37,8 +45,9 @@ public class MouseLookT : MonoBehaviour
         
         if(Input.GetMouseButton(1))
         {
+           // Cursor.lockState = CursorLockMode.Locked;
             transform.LookAt(playerBody);
-            transform.RotateAround(playerBody.position, Vector3.up, mouseX * sensitivity * Time.deltaTime);
+            transform.RotateAround(playerBody.position, Vector3.up, mouseX * sensitivity * Time.fixedDeltaTime);
         }
         else
         {

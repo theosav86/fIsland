@@ -8,7 +8,7 @@ public class TileT : MonoBehaviour
 
     public string tileName;
 
-    public PlayerT playerStart;
+    public Character characterStart;
 
     public Vector3 floodRotation = new Vector3(0f, 0f, -180f);
 
@@ -20,10 +20,8 @@ public class TileT : MonoBehaviour
 
     public bool isFlooding;
 
-    public NeighbourDetectorT[] neighbourDetectors;
-
-    public List<TileT> neighbours;
-
+    public List<TileT> neighboursAdj;
+    public List<TileT> neighboursDiag;
 
     #endregion
 
@@ -51,15 +49,7 @@ public class TileT : MonoBehaviour
 
     public virtual void DetectNeighbours()
     {
-        for (int i = 0; i < neighbourDetectors.Length; i++)
-        {
-            Debug.Log(neighbourDetectors[i].detectedTile);
-
-            if (neighbourDetectors[i].detectedTile != null)
-            {
-                neighbours.Add(neighbourDetectors[i].detectedTile);
-            }
-        }
+        
     }
 
 }

@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1755493424795292611}
   - component: {fileID: 1755493424795292610}
   m_Layer: 0
-  m_Name: Player
+  m_Name: Explorer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -93,7 +93,7 @@ GameObject:
   - component: {fileID: 1755493425460865138}
   - component: {fileID: 1755493425460865137}
   m_Layer: 0
-  m_Name: PlayerModel
+  m_Name: CharacterModel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -142,7 +142,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 09ef9f2fdb4a6a741927a335ffcd959a, type: 2}
+  - {fileID: 2100000, guid: 03d64f965aae9214b9565ee95111e282, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

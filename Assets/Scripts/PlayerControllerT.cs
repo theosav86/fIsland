@@ -6,7 +6,7 @@ public class PlayerControllerT : MonoBehaviour
 {
     #region Variables
 
-    public float moveSpeed = 5f;
+    public float moveSpeed;
 
     public float jumpForce = 5f;
 
@@ -20,10 +20,6 @@ public class PlayerControllerT : MonoBehaviour
     private float xAxis, zAxis;
 
     private Vector3 xInput, zInput = new Vector3();
-
-
-    [Range(10f, 100f)]
-    public float mouseSensitivity = 30f;
 
     #endregion
 
@@ -41,34 +37,27 @@ public class PlayerControllerT : MonoBehaviour
         zAxis = Input.GetAxis("Vertical");
 
         xInput = xAxis * transform.right;
-        zInput = zAxis * transform.up;
-
-        //Mouse Input
-       // mouseX = Input.GetAxis("Mouse X");
+        zInput = zAxis * transform.forward;
 
         //Check for jumping
         if (Input.GetButtonDown("Jump") && !isJumping)
         {
             Jump();
         }
-
-        //Check to rotate camera
-       /* if(Input.GetMouseButton(1))
-        {
-            RotatePlayer();
-        }*/
     }
 
     private void FixedUpdate()
     {
-        Vector3 movementVector = xInput + zInput;
-
-        movementVector.y = playerBody.velocity.y;
+        Vector3 movementVector = xInput + zInput ;
 
         Vector3 finalVelocity = movementVector * moveSpeed * Time.fixedDeltaTime;
 
+        finalVelocity = Vector3.ClampMagnitude(finalVelocity, 1f) * moveSpeed * Time.deltaTime;
+
+        finalVelocity.y = playerBody.velocity.y;
+
         //Move the player
-        playerBody.MovePosition(playerBody.position + finalVelocity);
+        playerBody.velocity = (finalVelocity);
       
     }
 

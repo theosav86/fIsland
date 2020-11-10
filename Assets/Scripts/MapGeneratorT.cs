@@ -2,22 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FoolsLanding : TileT
+public class MapGeneratorT : MonoBehaviour
 {
+
+    public Transform[] crossLayout;
+
     // Start is called before the first frame update
-    public void Start()
+    void Start()
     {
 
-        //FlipTile(true);
     }
 
     // Update is called once per frame
     void Update()
     {
         
-    }
-
-    public override void DetectNeighbours()
-    {
     }
 }

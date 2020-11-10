@@ -7,7 +7,6 @@ public class GoldGate : TileT
 
     public void Start()
     {
-        DetectNeighbours();
     }
 
     private void Update()
@@ -16,6 +15,5 @@ public class GoldGate : TileT
 
     public override void DetectNeighbours()
     {
-        base.DetectNeighbours();
     }
 }
