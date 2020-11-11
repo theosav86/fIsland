@@ -10,7 +10,7 @@ public class MapGeneratorT : MonoBehaviour
 
     [Header("Terrain Tiles")]
     [Tooltip("Insert the tile prefabs here")]
-    public TileT[] tiles;
+    public GameObject[] tiles;
 
     [Header("Terrain Layouts")]
     [Tooltip("Various Terrain Layouts")]
