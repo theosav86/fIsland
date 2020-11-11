@@ -10,7 +10,8 @@ public class MapGeneratorT : MonoBehaviour
 
     [Header("Terrain Tiles")]
     [Tooltip("Insert the tile prefabs here")]
-    public GameObject[] tiles;
+    [SerializeField]
+    public List<GameObject> tiles;
 
     [Header("Terrain Layouts")]
     [Tooltip("Various Terrain Layouts")]
@@ -23,7 +24,18 @@ public class MapGeneratorT : MonoBehaviour
         {
             for(int i = 0; i < crossLayout.Length; i++)
             {
-                Instantiate(tiles[i], crossLayout[i].position, Quaternion.identity);
+                int tileToSpawn = Random.Range(0, tiles.Count);
+
+                if(tiles[tileToSpawn] != null)
+                {
+                    Instantiate(tiles[tileToSpawn], crossLayout[i].position, Quaternion.identity);
+                    tiles.RemoveAt(tileToSpawn);
+                }
+                else
+                {
+                    i -= 1;
+                }
+                
             }
 
             Debug.Log("Cross Layout Set Up");
