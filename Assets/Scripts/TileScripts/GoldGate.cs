@@ -5,8 +5,10 @@ using UnityEngine;
 public class GoldGate : TileT
 {
 
-    public void Start()
+    public override void Start()
     {
+        base.Start();
+
         FlipTile(true);
     }
 
@@ -16,5 +18,10 @@ public class GoldGate : TileT
 
     public override void DetectNeighbours()
     {
+    }
+
+    public override void OnMouseOver()
+    {
+        base.OnMouseOver();
     }
 }

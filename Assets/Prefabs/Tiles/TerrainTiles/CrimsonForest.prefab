@@ -60,17 +60,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tileName: 
   characterStart: {fileID: 0}
-  validationMaterials: []
-  tileRenderer: {fileID: 0}
-  isValid: 0
-  isFlooded: 0
-  isLost: 0
-  neighboursAdj: []
-  neighboursDiag: []
   floodRotation: {x: 0, y: 0, z: -180}
   shoreUpRotation: {x: 0, y: 0, z: 0}
   floodPosition: {x: 0, y: -0.5, z: 0}
   abyssPosition: {x: 0, y: -10, z: 0}
+  isFlooding: 0
+  neighboursAdj: []
+  neighboursDiag: []
 --- !u!1 &8230241355643199578
 GameObject:
   m_ObjectHideFlags: 0

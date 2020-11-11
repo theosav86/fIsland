@@ -5,9 +5,9 @@ using UnityEngine;
 public class FoolsLanding : TileT
 {
     // Start is called before the first frame update
-    public void Start()
+    public override void Start()
     {
-
+        base.Start();
         //FlipTile(true);
     }
 
@@ -19,5 +19,10 @@ public class FoolsLanding : TileT
 
     public override void DetectNeighbours()
     {
+    }
+
+    public override void OnMouseOver()
+    {
+        base.OnMouseOver();
     }
 }

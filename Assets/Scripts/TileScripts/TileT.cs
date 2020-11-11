@@ -10,6 +10,20 @@ public class TileT : MonoBehaviour
 
     public Character characterStart;
 
+    public Material[] validationMaterials;
+
+    public Renderer tileRenderer;
+
+    public bool isValid;
+
+    public bool isFlooded;
+
+    public bool isLost;
+
+    public List<TileT> neighboursAdj;
+
+    public List<TileT> neighboursDiag;
+
     public Vector3 floodRotation = new Vector3(0f, 0f, -180f);
 
     public Vector3 shoreUpRotation = new Vector3(0f, 0f, 0f);
@@ -18,12 +32,12 @@ public class TileT : MonoBehaviour
 
     public Vector3 abyssPosition = new Vector3(0f, -10f, 0f);
 
-    public bool isFlooding;
-
-    public List<TileT> neighboursAdj;
-    public List<TileT> neighboursDiag;
-
     #endregion
+
+    public virtual void Start()
+    {
+        tileRenderer = GetComponent<Renderer>();
+    }
 
     public void FlipTile(bool isFlooding)
     {
@@ -52,4 +66,20 @@ public class TileT : MonoBehaviour
         
     }
 
+    public virtual void OnMouseOver()
+    {
+        if(isValid)
+        {
+            tileRenderer.material = validationMaterials[0];
+        }
+        else
+        {
+            tileRenderer.material = validationMaterials[1];
+        }
+    }
+
+    public virtual void OnMouseUp()
+    {
+        //tell the game controller to move the proper character to this tile.
+    }
 }
