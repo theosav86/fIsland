@@ -7,6 +7,7 @@ public class GoldGate : TileT
 
     public void Start()
     {
+        FlipTile(true);
     }
 
     private void Update()

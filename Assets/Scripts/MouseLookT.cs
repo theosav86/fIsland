@@ -21,41 +21,41 @@ public class MouseLookT : MonoBehaviour
     void Start()
     {
 
+        Cursor.lockState = CursorLockMode.Locked;
+
         cameraOriginalRotation = transform.rotation; 
 
         cameraOriginalPosition = transform.localPosition;
     }
 
+    // Update is called once per frame
     private void Update()
     {
         mouseX = Input.GetAxis("Mouse X") * sensitivity * Time.deltaTime;
         mouseY = Input.GetAxis("Mouse Y") * sensitivity * Time.deltaTime;
-    }
-
-    // Update is called once per frame
-    void FixedUpdate()
-    {
-        
 
         //xRotation -= mouseY;
 
         //xRotation = Mathf.Clamp(xRotation, -90f, 90f);
 
         //transform.localRotation = Quaternion.Euler(xRotation, 0f, zRotation);
-        
-        if(Input.GetMouseButton(1))
+
+        if (Input.GetMouseButton(1))
         {
-           // Cursor.lockState = CursorLockMode.Locked;
+            Cursor.lockState = CursorLockMode.Confined;
+
             transform.LookAt(playerBody);
-            transform.RotateAround(playerBody.position, Vector3.up, mouseX * sensitivity * Time.fixedDeltaTime);
+            transform.RotateAround(playerBody.position, Vector3.up, mouseX * sensitivity * Time.deltaTime);
         }
         else
         {
             playerBody.Rotate(Vector3.up * mouseX);
+            Cursor.lockState = CursorLockMode.Locked;
         }
 
         if(Input.GetMouseButtonUp(1))
         {
+            Cursor.lockState = CursorLockMode.Locked;
             transform.localPosition = cameraOriginalPosition;
             transform.LookAt(playerBody);
         }
