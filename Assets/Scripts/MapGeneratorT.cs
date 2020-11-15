@@ -22,8 +22,6 @@ public class MapGeneratorT : MonoBehaviour
     {
         List<GameObject> randomBoard = new List<GameObject>(RandomizeBoard(tiles));
 
-        Debug.Log(randomBoard.Count);
-
         if (currentLayout == LayoutNames.CROSS)
         {
             for (int i = 0; i < crossLayout.Length; i++)

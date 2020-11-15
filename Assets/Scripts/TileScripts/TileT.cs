@@ -70,11 +70,11 @@ public class TileT : MonoBehaviour
     {
         if(isValid)
         {
-            tileRenderer.material = validationMaterials[0];
+            //tileRenderer.material = validationMaterials[0];
         }
         else
         {
-            tileRenderer.material = validationMaterials[1];
+            //tileRenderer.material = validationMaterials[1];
         }
     }
 
