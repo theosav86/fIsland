@@ -235,8 +235,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77779360095001a4aa55db49060f5adf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tileName: 
-  characterStart: {fileID: 0}
+  tileName: 6
   validationMaterials: []
   tileRenderer: {fileID: 0}
   isValid: 0
@@ -244,6 +243,7 @@ MonoBehaviour:
   isLost: 0
   neighboursAdj: []
   neighboursDiag: []
+  currentPosition: {x: 0, y: 0, z: 0}
   floodRotation: {x: 0, y: 0, z: -180}
   shoreUpRotation: {x: 0, y: 0, z: 0}
   floodPosition: {x: 0, y: -0.5, z: 0}

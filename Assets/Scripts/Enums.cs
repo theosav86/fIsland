@@ -14,5 +14,5 @@ public class Enums
 
     //public LayoutName layoutName { get; set; }
 
-    public enum Tiles { GOLD_GATE, BRONZE_GATE, SILVER_GATE, IRON_GATE, COPPER_GATE, FOOLS_LANDING }
+    public enum Tiles { GOLD_GATE, BRONZE_GATE, SILVER_GATE, IRON_GATE, COPPER_GATE, FOOLS_LANDING, RANDOM_TILE }
 }

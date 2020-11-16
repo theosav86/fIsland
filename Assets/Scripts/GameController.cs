@@ -33,9 +33,9 @@ public class GameController : MonoBehaviour//Singleton<GameController>
             {
                 if (RandomizeListT.Instance.tiles[i].tileName == characters[j].startingTile)
                 {
-                    CharacterT characterToSpawn = Instantiate(characters[j], RandomizeListT.Instance.tiles[i].transform.position, Quaternion.identity);
-                    characterToSpawn.characterCamera.enabled = false;
-                    characters.RemoveAt(j);
+                   // CharacterT characterToSpawn = Instantiate(characters[j], RandomizeListT.Instance.tiles[i].transform.position, Quaternion.identity);
+                   // characterToSpawn.characterCamera.enabled = false;
+                   // characters.RemoveAt(j);
                 }
             }       
 

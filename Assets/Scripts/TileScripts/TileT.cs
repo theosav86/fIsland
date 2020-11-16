@@ -6,7 +6,7 @@ public class TileT : MonoBehaviour
 {
     #region VARIABLES
 
-    public Enums.Tiles tileName;
+    public Enums.Tiles tileName = Enums.Tiles.RANDOM_TILE;
 
     //public GameObject characterStart;
 

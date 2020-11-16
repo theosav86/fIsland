@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6669788560263725547}
   - component: {fileID: 6989203338814596225}
   m_Layer: 8
-  m_Name: Tile
+  m_Name: CrimsonForest
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -58,15 +58,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77779360095001a4aa55db49060f5adf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tileName: 
-  characterStart: {fileID: 0}
+  tileName: 6
+  validationMaterials: []
+  tileRenderer: {fileID: 0}
+  isValid: 0
+  isFlooded: 0
+  isLost: 0
+  neighboursAdj: []
+  neighboursDiag: []
+  currentPosition: {x: 0, y: 0, z: 0}
   floodRotation: {x: 0, y: 0, z: -180}
   shoreUpRotation: {x: 0, y: 0, z: 0}
   floodPosition: {x: 0, y: -0.5, z: 0}
   abyssPosition: {x: 0, y: -10, z: 0}
-  isFlooding: 0
-  neighboursAdj: []
-  neighboursDiag: []
 --- !u!1 &8230241355643199578
 GameObject:
   m_ObjectHideFlags: 0
