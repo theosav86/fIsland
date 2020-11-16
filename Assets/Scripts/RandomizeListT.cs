@@ -9,18 +9,18 @@ public class RandomizeListT : Singleton<RandomizeListT>
     [Header("Terrain Tiles")]
     [Tooltip("Insert the tile prefabs here")]
     [SerializeField]
-    public List<GameObject> tiles;
+    public List<Object> tiles;
 
     [Header("Terrain Layouts")]
     [Tooltip("Various Terrain Layouts")]
     public Transform[] crossLayout;
 
-    private List<GameObject> randomBoard;
+    private List<Object> randomBoard;
 
     // Start is called before the first frame update
     private void Start()
     {
-        randomBoard = new List<GameObject>(ShuffleList(tiles));
+        randomBoard = new List<Object>(ShuffleList(tiles));
 
        // if (currentLayout == LayoutNames.CROSS)
        // {
@@ -35,16 +35,16 @@ public class RandomizeListT : Singleton<RandomizeListT>
     }
 
     //Takes a List<GameObject> and returns it with randomized elements
-    private List<GameObject> ShuffleList(List<GameObject> tileList)
+    public static List<T> ShuffleList<T>(List<T> inputList)
     {
         //Create a temporary list so we do not mess the original one
-        List<GameObject> tempTileList = new List<GameObject>(tileList);
+        List<T> tempTileList = new List<T>(inputList);
 
         //This is the List to return
-        List<GameObject> outputList = new List<GameObject>();
+        List<T> outputList = new List<T>();
 
         //While tempList has elements in it
-        while(tempTileList.Count > 0)
+        while (tempTileList.Count > 0)
         {
             //Select a random number between 0 and tempList size (size being reduced each iteration due to RemoveAt(index);)
             int index = Random.Range(0, tempTileList.Count);
@@ -54,12 +54,12 @@ public class RandomizeListT : Singleton<RandomizeListT>
 
             //remove that element from the tempList
             tempTileList.RemoveAt(index);
-            
         }
 
         //Return the randomized list
         return outputList;
     }
+
 
     public void GenerateBoard(Enums.LayoutName layoutToPlay)
     {

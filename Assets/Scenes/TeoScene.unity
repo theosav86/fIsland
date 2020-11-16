@@ -123,6 +123,35 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &1568805 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4398653492077161788, guid: e95129cf28a43eb4697d2194f048a317, type: 3}
+  m_PrefabInstance: {fileID: 5709606532366717742}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1568806
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1568805}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3dc033f6f95003b4d9eb2039748f23b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tileName: 
+  validationMaterials: []
+  tileRenderer: {fileID: 0}
+  isValid: 0
+  isFlooded: 0
+  isLost: 0
+  neighboursAdj: []
+  neighboursDiag: []
+  floodRotation: {x: 0, y: 0, z: -180}
+  shoreUpRotation: {x: 0, y: 0, z: 0}
+  floodPosition: {x: 0, y: -0.5, z: 0}
+  abyssPosition: {x: 0, y: -10, z: 0}
 --- !u!4 &78489261 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5709606532423513475, guid: e95129cf28a43eb4697d2194f048a317, type: 3}
@@ -401,7 +430,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5709606531700433737, guid: e95129cf28a43eb4697d2194f048a317, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5709606532450666784, guid: e95129cf28a43eb4697d2194f048a317, type: 3}
       propertyPath: m_LocalPosition.x
@@ -451,7 +480,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Terrain
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3441378537586480818, guid: e95129cf28a43eb4697d2194f048a317, type: 3}
+    - {fileID: 2732416714609070691, guid: e95129cf28a43eb4697d2194f048a317, type: 3}
+    - {fileID: 2817670685242391427, guid: e95129cf28a43eb4697d2194f048a317, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: e95129cf28a43eb4697d2194f048a317, type: 3}
 --- !u!1001 &7186539656497118764
 PrefabInstance:
@@ -563,7 +595,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9032941735286066509, guid: d272097938a37254dabf6208a9dc414d, type: 3}
       propertyPath: m_Name
-      value: MapGenerator
+      value: RandomizeList
       objectReference: {fileID: 0}
     - target: {fileID: 9032941735286066547, guid: d272097938a37254dabf6208a9dc414d, type: 3}
       propertyPath: crossLayout.Array.data[0]
@@ -661,5 +693,17 @@ PrefabInstance:
       propertyPath: crossLayout.Array.data[23]
       value: 
       objectReference: {fileID: 463590594}
+    - target: {fileID: 9032941735286066547, guid: d272097938a37254dabf6208a9dc414d, type: 3}
+      propertyPath: tiles.Array.data[1]
+      value: 
+      objectReference: {fileID: 2396490016965664276, guid: 4ca960f78e6d626488c16895cd672421, type: 3}
+    - target: {fileID: 9032941735286066547, guid: d272097938a37254dabf6208a9dc414d, type: 3}
+      propertyPath: tiles.Array.data[5]
+      value: 
+      objectReference: {fileID: 2770840178055576016, guid: abddb0174607b7440bc2fd3b959eec6f, type: 3}
+    - target: {fileID: 9032941735286066547, guid: d272097938a37254dabf6208a9dc414d, type: 3}
+      propertyPath: tiles.Array.data[17]
+      value: 
+      objectReference: {fileID: 3403774742249813223, guid: 03861104a2a96d44b9ca57455dbe4928, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d272097938a37254dabf6208a9dc414d, type: 3}

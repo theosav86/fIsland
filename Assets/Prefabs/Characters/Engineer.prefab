@@ -1,5 +1,23 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &2597676262899902856
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 191897440674912308}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6eec43fa5763d9643994b56459250652, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterCamera: {fileID: 191897440423128356}
+  activeRole: 1
+  playerColor: {r: 0, g: 0, b: 0, a: 0}
+  totalActions: 3
+  movementRange: 1
+  startingTile: {fileID: 2396490016965664276, guid: 4ca960f78e6d626488c16895cd672421, type: 3}
 --- !u!1001 &1942461342519200651
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9,7 +27,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1755493424795292607, guid: 09d6febf866f7a245850161b524653a4, type: 3}
       propertyPath: m_Name
-      value: Engineer Variant
+      value: Engineer
       objectReference: {fileID: 0}
     - target: {fileID: 1755493424795292608, guid: 09d6febf866f7a245850161b524653a4, type: 3}
       propertyPath: m_LocalPosition.x
@@ -61,3 +79,13 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: a4abcd990dbacae48901eeded12563f3, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 09d6febf866f7a245850161b524653a4, type: 3}
+--- !u!1 &191897440674912308 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1755493424795292607, guid: 09d6febf866f7a245850161b524653a4, type: 3}
+  m_PrefabInstance: {fileID: 1942461342519200651}
+  m_PrefabAsset: {fileID: 0}
+--- !u!20 &191897440423128356 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 1755493425617249967, guid: 09d6febf866f7a245850161b524653a4, type: 3}
+  m_PrefabInstance: {fileID: 1942461342519200651}
+  m_PrefabAsset: {fileID: 0}

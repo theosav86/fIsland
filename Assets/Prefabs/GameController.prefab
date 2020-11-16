@@ -45,11 +45,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameState: 0
   characterTurn: 4
-  playerCount: 4
+  playerCount: 6
   characters:
-  - {fileID: 3970136333639088792, guid: d2ea6806ab2850f489240828c58d01f8, type: 3}
-  - {fileID: 191897440674912308, guid: e577e118ae2a84346b6e639ba9b2d7ab, type: 3}
-  - {fileID: 5709049049217672201, guid: 44d78a100900d6348a29904205e70f4d, type: 3}
-  - {fileID: 7685277307017158353, guid: da0ac6645b26cbe408807a6eebfa2639, type: 3}
-  - {fileID: 4313624747719835269, guid: a542e797e12ae9845b325bf70ef760f6, type: 3}
-  - {fileID: 9046415729475634803, guid: 877dd32f2363f2546af1a3e05f984666, type: 3}
+  - {fileID: 8962629624848748963, guid: 877dd32f2363f2546af1a3e05f984666, type: 3}
+  - {fileID: 2597676262899902856, guid: e577e118ae2a84346b6e639ba9b2d7ab, type: 3}
+  - {fileID: 5471916870324712714, guid: 44d78a100900d6348a29904205e70f4d, type: 3}
+  - {fileID: -8399898547660952301, guid: a542e797e12ae9845b325bf70ef760f6, type: 3}
+  - {fileID: 799215029703753821, guid: da0ac6645b26cbe408807a6eebfa2639, type: 3}
+  - {fileID: 122309001, guid: d2ea6806ab2850f489240828c58d01f8, type: 3}

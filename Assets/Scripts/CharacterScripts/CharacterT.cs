@@ -6,6 +6,7 @@ public class CharacterT : MonoBehaviour
 {
     #region VARIABLES
 
+    public Camera characterCamera;
 
     public Enums.Role activeRole;
 
@@ -17,7 +18,13 @@ public class CharacterT : MonoBehaviour
 
     public int movementRange = 1;
 
-    public TileT startingTile;
+    public GameObject startingTile;
+
 
     #endregion
+
+    public virtual void Start()
+    {
+        characterCamera = GetComponent<Camera>();
+    }
 }

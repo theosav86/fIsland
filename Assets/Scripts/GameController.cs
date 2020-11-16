@@ -8,24 +8,41 @@ public class GameController : MonoBehaviour//Singleton<GameController>
 
     public Enums.Role characterTurn = Enums.Role.MESSENGER;
 
-    [Range(1, 4)]
+    [Range(1, 6)]
     [Tooltip("How many players will join")]
-    public int playerCount = 4;
+    public int playerCount = 6;
 
     [SerializeField]
-    public List<GameObject> characters;
+    public List<CharacterT> characters;
 
     private void Start()
     {
         RandomizeListT.Instance.GenerateBoard(RandomizeListT.Instance.currentLayout);
+
+        SpawnCharacters();
+
+        characters[Random.Range(0, characters.Count)].characterCamera.enabled = true;
     }
 
+
+    private void SpawnCharacters()
+    {
+        for(int i =0; i < playerCount; i++)
+        {
+            CharacterT characterToSpawn =  Instantiate(characters[i], characters[i].startingTile.transform.position,Quaternion.identity);
+
+            characterToSpawn.characterCamera.enabled = false;
+
+        }
+
+
+    }
     
 
     //Returns four random heroes to play.
     private void SelectRandomCharacter()
     {
-        //List<CharacterT> tempList;
+       //characters
     }
 
     //Which Character's turn is now
