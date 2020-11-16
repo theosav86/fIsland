@@ -5,9 +5,9 @@ using UnityEngine;
 public class CharacterT : MonoBehaviour
 {
     #region VARIABLES
-    public enum Role { PILOT, ENGINEER, EXPLORER, NAVIGATOR, MESSENGER, DIVER }
 
-    public Role activeRole;
+
+    public IEnums.Role activeRole;
 
     public Color playerColor;
 
