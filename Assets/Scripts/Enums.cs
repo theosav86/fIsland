@@ -1,6 +1,6 @@
 ﻿
 
-public class IEnums
+public class Enums
 {
     public enum GameState { PLAYER_TURN, ISLAND_TURN };
 
@@ -13,5 +13,4 @@ public class IEnums
     public enum LayoutName { CROSS }
 
     //public LayoutName layoutName { get; set; }
-
 }

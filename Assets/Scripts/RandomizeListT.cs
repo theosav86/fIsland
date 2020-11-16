@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MapGeneratorT : Singleton<MapGeneratorT>
+public class RandomizeListT : Singleton<RandomizeListT>
 {
-    public IEnums.LayoutName currentLayout = IEnums.LayoutName.CROSS;
+    public Enums.LayoutName currentLayout = Enums.LayoutName.CROSS;
 
     [Header("Terrain Tiles")]
     [Tooltip("Insert the tile prefabs here")]
@@ -20,7 +20,7 @@ public class MapGeneratorT : Singleton<MapGeneratorT>
     // Start is called before the first frame update
     private void Start()
     {
-        randomBoard = new List<GameObject>(RandomizeBoard(tiles));
+        randomBoard = new List<GameObject>(ShuffleList(tiles));
 
        // if (currentLayout == LayoutNames.CROSS)
        // {
@@ -35,7 +35,7 @@ public class MapGeneratorT : Singleton<MapGeneratorT>
     }
 
     //Takes a List<GameObject> and returns it with randomized elements
-    private List<GameObject> RandomizeBoard(List<GameObject> tileList)
+    private List<GameObject> ShuffleList(List<GameObject> tileList)
     {
         //Create a temporary list so we do not mess the original one
         List<GameObject> tempTileList = new List<GameObject>(tileList);
@@ -61,9 +61,9 @@ public class MapGeneratorT : Singleton<MapGeneratorT>
         return outputList;
     }
 
-    public void GenerateBoard(IEnums.LayoutName layoutToPlay)
+    public void GenerateBoard(Enums.LayoutName layoutToPlay)
     {
-        if(layoutToPlay == IEnums.LayoutName.CROSS)
+        if(layoutToPlay == Enums.LayoutName.CROSS)
         {
             for (int i = 0; i < crossLayout.Length; i++)
             {

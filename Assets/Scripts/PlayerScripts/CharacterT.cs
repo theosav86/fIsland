@@ -7,7 +7,7 @@ public class CharacterT : MonoBehaviour
     #region VARIABLES
 
 
-    public IEnums.Role activeRole;
+    public Enums.Role activeRole;
 
     public Color playerColor;
 

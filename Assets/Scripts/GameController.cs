@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class GameController : MonoBehaviour//Singleton<GameController>
 {
-    public IEnums.GameState gameState = IEnums.GameState.PLAYER_TURN;
+    public Enums.GameState gameState = Enums.GameState.PLAYER_TURN;
 
-    public IEnums.Role characterTurn = IEnums.Role.MESSENGER;
+    public Enums.Role characterTurn = Enums.Role.MESSENGER;
 
     [Range(1, 4)]
     [Tooltip("How many players will join")]
@@ -17,12 +17,7 @@ public class GameController : MonoBehaviour//Singleton<GameController>
 
     private void Start()
     {
-        MapGeneratorT.Instance.GenerateBoard(MapGeneratorT.Instance.currentLayout);
-
-        //SelectRandomCharacter();
-        //SelectRandomCharacter();
-        //SelectRandomCharacter();
-        //SelectRandomCharacter();
+        RandomizeListT.Instance.GenerateBoard(RandomizeListT.Instance.currentLayout);
     }
 
     
@@ -34,7 +29,7 @@ public class GameController : MonoBehaviour//Singleton<GameController>
     }
 
     //Which Character's turn is now
-    public void PlayersTurn(IEnums.Role playerRole)
+    public void PlayersTurn(Enums.Role playerRole)
     {
 
     }
