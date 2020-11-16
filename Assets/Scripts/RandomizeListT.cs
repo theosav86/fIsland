@@ -9,7 +9,9 @@ public class RandomizeListT : Singleton<RandomizeListT>
     [Header("Terrain Tiles")]
     [Tooltip("Insert the tile prefabs here")]
     [SerializeField]
-    public List<Object> tiles;
+    public List<TileT> tiles;
+
+    //public List<TileT> tileScripts;
 
     [Header("Terrain Layouts")]
     [Tooltip("Various Terrain Layouts")]
@@ -20,6 +22,10 @@ public class RandomizeListT : Singleton<RandomizeListT>
     // Start is called before the first frame update
     private void Start()
     {
+        //tileScripts = new List<TileT>();
+
+       // tileScripts = tiles.gameObject.getComponent<TileT>();
+
         randomBoard = new List<Object>(ShuffleList(tiles));
 
        // if (currentLayout == LayoutNames.CROSS)

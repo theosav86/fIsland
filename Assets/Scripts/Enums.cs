@@ -13,4 +13,6 @@ public class Enums
     public enum LayoutName { CROSS }
 
     //public LayoutName layoutName { get; set; }
+
+    public enum Tiles { GOLD_GATE, BRONZE_GATE, SILVER_GATE, IRON_GATE, COPPER_GATE, FOOLS_LANDING }
 }

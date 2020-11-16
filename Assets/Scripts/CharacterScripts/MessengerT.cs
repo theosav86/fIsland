@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Messenger : MonoBehaviour
+public class MessengerT : CharacterT
 {
     // Start is called before the first frame update
-    void Start()
+    public override void Start()
     {
-        
+        base.Start();
     }
 
     // Update is called once per frame

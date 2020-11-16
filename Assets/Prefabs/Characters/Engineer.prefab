@@ -14,10 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterCamera: {fileID: 191897440423128356}
   activeRole: 1
-  playerColor: {r: 0, g: 0, b: 0, a: 0}
+  startingTile: 1
+  playerColor: {r: 1, g: 0, b: 0, a: 1}
   totalActions: 3
   movementRange: 1
-  startingTile: {fileID: 2396490016965664276, guid: 4ca960f78e6d626488c16895cd672421, type: 3}
 --- !u!1001 &1942461342519200651
 PrefabInstance:
   m_ObjectHideFlags: 0

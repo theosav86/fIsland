@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-8399898547660952301
+--- !u!114 &4109644335894153626
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -14,10 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterCamera: {fileID: 4313624746931162005}
   activeRole: 4
-  playerColor: {r: 0, g: 0, b: 0, a: 0}
+  startingTile: 2
+  playerColor: {r: 0.3679245, g: 0.3210662, b: 0.3210662, a: 1}
   totalActions: 3
   movementRange: 1
-  startingTile: {fileID: 3403774742249813223, guid: 03861104a2a96d44b9ca57455dbe4928, type: 3}
 --- !u!1001 &2558556009301388602
 PrefabInstance:
   m_ObjectHideFlags: 0

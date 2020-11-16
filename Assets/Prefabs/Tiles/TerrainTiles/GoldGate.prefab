@@ -235,8 +235,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29983403ff50d99419acfb3de0690ad2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tileName: 
-  characterStart: {fileID: 7685277307017158353, guid: da0ac6645b26cbe408807a6eebfa2639, type: 3}
+  tileName: GoldGate
   validationMaterials: []
   tileRenderer: {fileID: 0}
   isValid: 0

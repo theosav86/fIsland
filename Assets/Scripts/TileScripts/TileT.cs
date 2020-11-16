@@ -6,7 +6,7 @@ public class TileT : MonoBehaviour
 {
     #region VARIABLES
 
-    public string tileName;
+    public Enums.Tiles tileName;
 
     //public GameObject characterStart;
 
@@ -25,6 +25,9 @@ public class TileT : MonoBehaviour
 
     public List<TileT> neighboursDiag;
 
+    [HideInInspector]
+    public Vector3 currentPosition;
+
     public Vector3 floodRotation = new Vector3(0f, 0f, -180f);
 
     public Vector3 shoreUpRotation = new Vector3(0f, 0f, 0f);
@@ -38,7 +41,7 @@ public class TileT : MonoBehaviour
     public virtual void Start()
     {
         tileRenderer = GetComponent<Renderer>();
-
+        currentPosition = this.transform.position;
         /*if(characterStart != null)
         {
             Debug.Log("Spawning player");

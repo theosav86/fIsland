@@ -10,6 +10,8 @@ public class CharacterT : MonoBehaviour
 
     public Enums.Role activeRole;
 
+    public Enums.Tiles startingTile;
+
     public Color playerColor;
 
     public int totalActions = 3;
@@ -17,8 +19,6 @@ public class CharacterT : MonoBehaviour
     //public bool canMoveDiagonal = false;
 
     public int movementRange = 1;
-
-    public GameObject startingTile;
 
 
     #endregion
