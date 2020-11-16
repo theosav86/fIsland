@@ -2,11 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MapGeneratorT : MonoBehaviour
+public class MapGeneratorT : Singleton<MapGeneratorT>
 {
-    public enum LayoutNames { CROSS }
-
-    public LayoutNames currentLayout = LayoutNames.CROSS;
+    public IEnums.LayoutName currentLayout = IEnums.LayoutName.CROSS;
 
     [Header("Terrain Tiles")]
     [Tooltip("Insert the tile prefabs here")]
@@ -24,15 +22,10 @@ public class MapGeneratorT : MonoBehaviour
     {
         randomBoard = new List<GameObject>(RandomizeBoard(tiles));
 
-        if (currentLayout == LayoutNames.CROSS)
-        {
-            for (int i = 0; i < crossLayout.Length; i++)
-            {
-                Instantiate(randomBoard[i], crossLayout[i].position, Quaternion.identity);
-            }            
+       // if (currentLayout == LayoutNames.CROSS)
+       // {
             
-            Debug.Log("Cross Layout Set Up");
-        }        
+        //}        
     }
 
     // Update is called once per frame
@@ -66,6 +59,19 @@ public class MapGeneratorT : MonoBehaviour
 
         //Return the randomized list
         return outputList;
+    }
+
+    public void GenerateBoard(IEnums.LayoutName layoutToPlay)
+    {
+        if(layoutToPlay == IEnums.LayoutName.CROSS)
+        {
+            for (int i = 0; i < crossLayout.Length; i++)
+            {
+                Instantiate(randomBoard[i], crossLayout[i].position, Quaternion.identity);
+            }
+
+            Debug.Log("Cross Layout Set Up");
+        }
     }
     
 }
