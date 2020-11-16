@@ -236,7 +236,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tileName: 
-  characterStart: {fileID: 0}
+  characterStart: {fileID: 1755493424795292607, guid: a1a0ea8e84c39f440a372ef6ad95867a, type: 3}
   validationMaterials: []
   tileRenderer: {fileID: 0}
   isValid: 0

@@ -8,10 +8,11 @@ public class TileT : MonoBehaviour
 
     public string tileName;
 
-    public Character characterStart;
+    public GameObject characterStart;
 
     public Material[] validationMaterials;
 
+    [HideInInspector]
     public Renderer tileRenderer;
 
     public bool isValid;
@@ -37,6 +38,12 @@ public class TileT : MonoBehaviour
     public virtual void Start()
     {
         tileRenderer = GetComponent<Renderer>();
+
+        if(characterStart != null)
+        {
+            Debug.Log("Spawning player");
+            Instantiate(characterStart, transform.position, Quaternion.identity);
+        }
     }
 
     public void FlipTile(bool isFlooding)

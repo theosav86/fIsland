@@ -9,7 +9,7 @@ public class GoldGate : TileT
     {
         base.Start();
 
-        FlipTile(true);
+        //FlipTile(true);
     }
 
     private void Update()

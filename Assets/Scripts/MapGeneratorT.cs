@@ -17,10 +17,12 @@ public class MapGeneratorT : MonoBehaviour
     [Tooltip("Various Terrain Layouts")]
     public Transform[] crossLayout;
 
+    private List<GameObject> randomBoard;
+
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-        List<GameObject> randomBoard = new List<GameObject>(RandomizeBoard(tiles));
+        randomBoard = new List<GameObject>(RandomizeBoard(tiles));
 
         if (currentLayout == LayoutNames.CROSS)
         {
