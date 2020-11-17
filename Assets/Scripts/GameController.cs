@@ -50,9 +50,9 @@ public class GameController : MonoBehaviour//Singleton<GameController>
             {
                 if (playBoard[i].tileName == characters[j].startingTile)
                 {
-                    //CharacterT characterToSpawn = Instantiate(characters[j], playBoard[i].transform.position, Quaternion.identity);
-                    //characterToSpawn.characterCamera.enabled = false;
-                    //characters.RemoveAt(j);
+                    CharacterT characterToSpawn = Instantiate(characters[j], playBoard[i].currentPosition, Quaternion.identity);
+                    characterToSpawn.characterCamera.enabled = false;
+                    characters.RemoveAt(j);
                 }
             }       
 

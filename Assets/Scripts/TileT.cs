@@ -12,6 +12,8 @@ public class TileT : MonoBehaviour
 
     public bool hasTreasure = false;
 
+    public Vector3 currentPosition;
+
     [HideInInspector]
     public Renderer tileRenderer;
 
@@ -26,9 +28,6 @@ public class TileT : MonoBehaviour
     public List<TileT> neighboursAdj;
 
     public List<TileT> neighboursDiag;
-
-    [HideInInspector]
-    public Vector3 currentPosition;
 
     public Vector3 floodRotation = new Vector3(0f, 0f, -180f);
 
