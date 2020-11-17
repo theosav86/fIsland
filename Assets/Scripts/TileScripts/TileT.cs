@@ -8,9 +8,9 @@ public class TileT : MonoBehaviour
 
     public Enums.Tiles tileName = Enums.Tiles.RANDOM_TILE;
 
-    //public GameObject characterStart;
+    public Enums.Role characterStart;
 
-    public Material[] validationMaterials;
+    public bool hasTreasure = false;
 
     [HideInInspector]
     public Renderer tileRenderer;
@@ -20,6 +20,8 @@ public class TileT : MonoBehaviour
     public bool isFlooded;
 
     public bool isLost;
+
+    public Material[] validationMaterials;
 
     public List<TileT> neighboursAdj;
 
