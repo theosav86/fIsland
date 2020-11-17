@@ -23,6 +23,10 @@ public class GameController : MonoBehaviour//Singleton<GameController>
 
     private List<TileT> playBoard;
 
+    private List<CharacterT> playCharacters;
+
+    private CharacterT startingCharacter;
+
     [Range(1, 6)]
     [Tooltip("How many players will join")]
     public int playerCount = 6;
@@ -32,10 +36,11 @@ public class GameController : MonoBehaviour//Singleton<GameController>
 
     private void Start()
     {
+        playCharacters = new List<CharacterT>();
 
         randomBoard = new List<GameObject>(ShuffleList(tiles));
         
-        playBoard = GenerateBoard(currentLayout);
+        playBoard = new List<TileT>(GenerateBoard(currentLayout));
 
         SpawnCharacters();
 
@@ -49,29 +54,16 @@ public class GameController : MonoBehaviour//Singleton<GameController>
             TileT tileToSpawnChar = GetTileByName(characters[j].startingTile);
             CharacterT characterToSpawn = Instantiate(characters[j], tileToSpawnChar.currentPosition, Quaternion.identity);
             characterToSpawn.characterCamera.enabled = false;
-            //characters.RemoveAt(j);
+            playCharacters.Add(characterToSpawn);
+
+
         }
         //by kmell[
         //}
         //]bykmell
-
-        /*Teo code
-        for(int i = 0; i < playBoard.Count; i++)
-        {
-            for(int j = 0; j < characters.Count; j++)
-            {
-                if (playBoard[i].tileName == characters[j].startingTile)
-                {
-
-                    CharacterT characterToSpawn = Instantiate(characters[j], playBoard[i].currentPosition, Quaternion.identity);
-                    characterToSpawn.characterCamera.enabled = false;
-                    characters.RemoveAt(j);
-                }
-            }       
-
-        }Teo code*/
-
-        characters[Random.Range(0, characters.Count)].characterCamera.enabled = true;
+        int playCharacterIndex = Random.Range(0, characters.Count);
+        playCharacters[playCharacterIndex].characterCamera.enabled = true;
+        startingCharacter = playCharacters[playCharacterIndex];
     }
     
 
@@ -130,7 +122,7 @@ public class GameController : MonoBehaviour//Singleton<GameController>
         if (layoutToPlay == Enums.LayoutName.CROSS)
         {
             for (int i = 0; i < crossLayout.Length; i++)
-            {
+            {  
                 Instantiate(randomBoard[i], crossLayout[i].position, Quaternion.identity);
                 //by kmell{
                 randomBoard[i].GetComponent<TileT>().currentPosition = crossLayout[i].position;

@@ -43,11 +43,6 @@ public class TileT : MonoBehaviour
     {
         tileRenderer = GetComponent<Renderer>();
         currentPosition = this.transform.position;
-        /*if(characterStart != null)
-        {
-            Debug.Log("Spawning player");
-            Instantiate(characterStart, transform.position, Quaternion.identity);
-        }*/
     }
 
     public void FlipTile(bool isFlooding)
