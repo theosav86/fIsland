@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterCamera: {fileID: 9046415730263782243}
   activeRole: 5
-  startingTile: 0
+  startingTile: 3
   playerColor: {r: 0, g: 0, b: 0, a: 1}
   totalActions: 3
   movementRange: 1

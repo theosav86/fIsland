@@ -44,19 +44,32 @@ public class GameController : MonoBehaviour//Singleton<GameController>
 
     private void SpawnCharacters()
     {
+        for (int j = 0; j < characters.Count; j++)
+        {
+            TileT tileToSpawnChar = GetTileByName(characters[j].startingTile);
+            CharacterT characterToSpawn = Instantiate(characters[j], tileToSpawnChar.currentPosition, Quaternion.identity);
+            characterToSpawn.characterCamera.enabled = false;
+            //characters.RemoveAt(j);
+        }
+        //by kmell[
+        //}
+        //]bykmell
+
+        /*Teo code
         for(int i = 0; i < playBoard.Count; i++)
         {
             for(int j = 0; j < characters.Count; j++)
             {
                 if (playBoard[i].tileName == characters[j].startingTile)
                 {
+
                     CharacterT characterToSpawn = Instantiate(characters[j], playBoard[i].currentPosition, Quaternion.identity);
                     characterToSpawn.characterCamera.enabled = false;
                     characters.RemoveAt(j);
                 }
             }       
 
-        }
+        }Teo code*/
 
         characters[Random.Range(0, characters.Count)].characterCamera.enabled = true;
     }
@@ -119,6 +132,9 @@ public class GameController : MonoBehaviour//Singleton<GameController>
             for (int i = 0; i < crossLayout.Length; i++)
             {
                 Instantiate(randomBoard[i], crossLayout[i].position, Quaternion.identity);
+                //by kmell{
+                randomBoard[i].GetComponent<TileT>().currentPosition = crossLayout[i].position;
+                //}
                 tempList.Add(randomBoard[i].GetComponent<TileT>());
             }
 
@@ -128,5 +144,18 @@ public class GameController : MonoBehaviour//Singleton<GameController>
         return tempList;
     }
 
+    //by kmell[
+    //Returns the tile with the desired Name
+    public TileT GetTileByName(Enums.Tiles nameToFind)
+    {
+        foreach (TileT checkTile in playBoard)
+        {
+            if (checkTile.tileName == nameToFind)
+                return checkTile;
+        }
+
+        return null;
+    }
+    //]
     #endregion
 }
