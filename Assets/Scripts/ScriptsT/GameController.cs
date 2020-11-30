@@ -70,7 +70,7 @@ public class GameController : MonoBehaviour//Singleton<GameController>
     //Returns four random heroes to play.
     private void SelectRandomCharacter()
     {
-       //characters
+       //allCharacters
     }
 
     //Which Character's turn is now
