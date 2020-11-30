@@ -53,7 +53,7 @@ public class GameController : MonoBehaviour//Singleton<GameController>
         {
             TileT tileToSpawnChar = GetTileByName(characters[j].startingTile);
             CharacterT characterToSpawn = Instantiate(characters[j], tileToSpawnChar.currentPosition, Quaternion.identity);
-            characterToSpawn.characterCamera.enabled = false;
+            //characterToSpawn.characterCamera.enabled = false;
             playCharacters.Add(characterToSpawn);
 
 
