@@ -60,14 +60,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tileName: 6
   characterStart: 6
-  validationMaterials: []
+  hasTreasure: 0
+  currentPosition: {x: 0, y: 0, z: 0}
   tileRenderer: {fileID: 0}
   isValid: 0
   isFlooded: 0
   isLost: 0
+  validationMaterials: []
   neighboursAdj: []
   neighboursDiag: []
-  currentPosition: {x: 0, y: 0, z: 0}
   floodRotation: {x: 0, y: 0, z: -180}
   shoreUpRotation: {x: 0, y: 0, z: 0}
   floodPosition: {x: 0, y: -0.5, z: 0}

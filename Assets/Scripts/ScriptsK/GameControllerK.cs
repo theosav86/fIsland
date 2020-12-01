@@ -13,67 +13,69 @@ public class GameControllerK : MonoBehaviour//Singleton<GameController>
     [Header("Terrain Tiles")]
     [Tooltip("Insert the tile prefabs here")]
     [SerializeField]
-    public List<GameObject> tiles;
+    public List<TileT> allTiles;
 
     [Header("Terrain Layouts")]
     [Tooltip("Various Terrain Layouts")]
     public Transform[] crossLayout;
 
-    private List<GameObject> randomBoard;
+    private List<TileT> currentBoardTiles;
 
-    private List<TileT> playBoard;
+    private static List<CharacterT> currentCharacters;
 
-    private List<CharacterT> playCharacters;
-
-    private CharacterT startingCharacter;
+    private static CharacterT playingCharacter;
+    private static int playingCharacterListIndex;
 
     [Range(1, 6)]
     [Tooltip("How many players will join")]
-    public int playerCount = 6;
+    public static int playerCount = 6;
 
     [SerializeField]
     public List<CharacterT> allCharacters;
 
+    
+
     private void Start()
     {
-        //playCharacters = loadCharacters();
-        
-        playCharacters = new List<CharacterT>();
+        LoadCharacters(playerCount);
 
-        randomBoard = new List<GameObject>(ShuffleList(tiles));
-        
-        playBoard = new List<TileT>(GenerateBoard(currentLayout));
+        GenerateBoard(Enums.LayoutName.CROSS);
 
         SpawnCharacters();
 
     }
 
+    private void LoadCharacters(int numOfPlayers)
+    {
+        if (numOfPlayers == 0)
+        {
+            numOfPlayers = Random.Range(2, allCharacters.Count);
+            Debug.Log("#players: " + numOfPlayers);
+        }
+        currentCharacters = ShuffleList(allCharacters).GetRange(0, numOfPlayers);
+        Debug.Log(currentCharacters.ToString());
+    }
 
     private void SpawnCharacters()
     {
-        allCharacters = ShuffleList(allCharacters);
-        for (int j = 0; j < allCharacters.Count; j++)
+        foreach (CharacterT charToSpawn in currentCharacters)
         {
-            TileT tileToSpawnChar = GetTileByName(allCharacters[j].startingTile);
-            CharacterT characterToSpawn = Instantiate(allCharacters[j], tileToSpawnChar.currentPosition, Quaternion.identity);
-            playCharacters.Add(characterToSpawn);
+            TileT tileToSpawnChar = GetTileByName(charToSpawn.startingTile);
+            Instantiate(charToSpawn, tileToSpawnChar.currentPosition, Quaternion.identity);
+            charToSpawn.SetCurrentTile(tileToSpawnChar);
+            charToSpawn.GetComponent<PlayerControllerT>().enabled = false;
+            charToSpawn.characterCamera.enabled = false;
+    }
 
-
-        }
-
-        allCharacters[0].characterCamera.enabled = true;
-
-        int playCharacterIndex = Random.Range(0, allCharacters.Count);
-        playCharacters[playCharacterIndex].characterCamera.enabled = true;
-        startingCharacter = playCharacters[playCharacterIndex];
+        playingCharacter = GetCharByName(Enums.Role.MESSENGER);
+        playingCharacter.characterCamera.enabled = true;
+        playingCharacter.GetComponent<PlayerControllerT>().enabled = true;
+        playingCharacterListIndex = currentCharacters.IndexOf(playingCharacter);
+        /*currentCharacters[0].characterCamera.enabled = true;
+        currentCharacters[0].GetComponent<PlayerControllerT>().enabled = true;
+        startingCharacter = currentCharacters[0];*/
     }
     
-
-    //Returns four random heroes to play.
-    private void SelectRandomCharacter()
-    {
-       //allCharacters
-    }
 
     //Which Character's turn is now
     public void PlayersTurn(Enums.Role playerRole)
@@ -117,32 +119,39 @@ public class GameControllerK : MonoBehaviour//Singleton<GameController>
     }
 
 
-    public List<TileT> GenerateBoard(Enums.LayoutName layoutToPlay)
+    public void GenerateBoard(Enums.LayoutName layoutToPlay)
     {
-        List<TileT> tempList = new List<TileT>();
+        currentBoardTiles = ShuffleList(allTiles);
 
         if (layoutToPlay == Enums.LayoutName.CROSS)
         {
             for (int i = 0; i < crossLayout.Length; i++)
             {  
-                Instantiate(randomBoard[i], crossLayout[i].position, Quaternion.identity);
-                //by kmell{
-                randomBoard[i].GetComponent<TileT>().currentPosition = crossLayout[i].position;
-                //}
-                tempList.Add(randomBoard[i].GetComponent<TileT>());
+                Instantiate(currentBoardTiles[i], crossLayout[i].position, Quaternion.identity);
+                currentBoardTiles[i].currentPosition = crossLayout[i].position;
             }
 
             Debug.Log("Cross Layout Set Up");
         }
-
-        return tempList;
     }
 
-    //by kmell[
-    //Returns the tile with the desired Name
+    internal static void PlayerTurnEnded(CharacterT character)
+    {
+        character.GetComponent<Camera>().enabled = false;
+        NextPlayer();
+    }
+
+    private static void NextPlayer()
+    {
+        playingCharacterListIndex++;
+        playingCharacterListIndex %= playerCount; //So that always stays in the Lists limits. Rotates through list.
+        playingCharacter = currentCharacters[playingCharacterListIndex];
+        playingCharacter.GetComponent<Camera>().enabled = true;
+    }
+
     public TileT GetTileByName(Enums.Tiles nameToFind)
     {
-        foreach (TileT checkTile in playBoard)
+        foreach (TileT checkTile in currentBoardTiles)
         {
             if (checkTile.tileName == nameToFind)
                 return checkTile;
@@ -150,6 +159,17 @@ public class GameControllerK : MonoBehaviour//Singleton<GameController>
 
         return null;
     }
-    //]
+
+    public CharacterT GetCharByName(Enums.Role nameToFind)
+    {
+        foreach (CharacterT checkChar in currentCharacters)
+        {
+            if (checkChar.activeRole== nameToFind)
+                return checkChar;
+        }
+
+        return null;
+    }
+
     #endregion
 }

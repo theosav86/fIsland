@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -15,10 +16,13 @@ public class CharacterT : MonoBehaviour
     public Color playerColor;
 
     public int totalActions = 3;
+    private int actionsLeft = 3;
 
     //public bool canMoveDiagonal = false;
 
     public int movementRange = 1;
+
+    public TileT currentTile;
 
 
     #endregion
@@ -26,5 +30,39 @@ public class CharacterT : MonoBehaviour
     public virtual void Start()
     {
         characterCamera = GetComponent<Camera>();
+    }
+
+    public void OnCollisionEnter(Collision other)
+    {
+        Debug.Log("ELA TO COLLISION!!!");
+        TileT tileTouched = other.gameObject.GetComponent<TileT>();
+        if (tileTouched.tileName != currentTile.tileName)
+        {
+            currentTile = tileTouched;
+            ActionMade(tileTouched);
+        }
+    }
+
+    public void ActionMade(TileT source)
+    {
+        if (actionsLeft == 1)
+        {
+            endTurn();
+            return;
+        }
+        actionsLeft--;
+        Debug.Log("Action Made! Left: ");
+        
+    }
+
+    private void endTurn()
+    {
+        GameControllerK.PlayerTurnEnded(this);
+        actionsLeft = 3;
+    }
+
+    internal void SetCurrentTile(TileT tileToSet)
+    {
+        currentTile = tileToSet;
     }
 }
