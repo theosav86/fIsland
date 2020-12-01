@@ -22,9 +22,9 @@ public class GameControllerK : MonoBehaviour//Singleton<GameController>
     private List<TileT> currentBoardTiles;
 
     private static List<CharacterT> currentCharacters;
+    private static int playingCharacterIndex;
 
-    private static CharacterT playingCharacter;
-    private static int playingCharacterListIndex;
+    private static CharacterT currentCharacter;
 
     [Range(1, 6)]
     [Tooltip("How many players will join")]
@@ -50,27 +50,32 @@ public class GameControllerK : MonoBehaviour//Singleton<GameController>
         if (numOfPlayers == 0)
         {
             numOfPlayers = Random.Range(2, allCharacters.Count);
-            Debug.Log("#players: " + numOfPlayers);
         }
         currentCharacters = ShuffleList(allCharacters).GetRange(0, numOfPlayers);
-        Debug.Log(currentCharacters.ToString());
+        
     }
 
     private void SpawnCharacters()
     {
-        foreach (CharacterT charToSpawn in currentCharacters)
+        for (int i=0; i<currentCharacters.Count; i++)// each (CharacterT charToSpawn in currentCharacters)
         {
-            TileT tileToSpawnChar = GetTileByName(charToSpawn.startingTile);
-            Instantiate(charToSpawn, tileToSpawnChar.currentPosition, Quaternion.identity);
-            charToSpawn.SetCurrentTile(tileToSpawnChar);
-            charToSpawn.GetComponent<PlayerControllerT>().enabled = false;
-            charToSpawn.characterCamera.enabled = false;
-    }
+            TileT tileToSpawnChar = GetTileByName(currentCharacters[i].startingTile);
 
-        playingCharacter = GetCharByName(Enums.Role.MESSENGER);
-        playingCharacter.characterCamera.enabled = true;
-        playingCharacter.GetComponent<PlayerControllerT>().enabled = true;
-        playingCharacterListIndex = currentCharacters.IndexOf(playingCharacter);
+            currentCharacters[i] = Instantiate(currentCharacters[i], tileToSpawnChar.currentPosition, Quaternion.identity);
+
+
+            currentCharacters[i].currentTile = tileToSpawnChar;//SetCurrentTile(tileToSpawnChar);
+
+            currentCharacters[i].GetComponent<PlayerControllerT>().enabled = false;
+            currentCharacters[i].characterCamera.enabled = false;
+            //charToSpawn.GetComponent<MouseLookT>().enabled = false;
+        }
+
+        currentCharacter = currentCharacters[0];
+        currentCharacter.characterCamera.enabled = true;
+        currentCharacter.GetComponent<PlayerControllerT>().enabled = true;
+        //currentCharacter.GetComponent<MouseLookT>().enabled = true;
+        playingCharacterIndex = 0;//currentCharacters.IndexOf(currentCharacter);
         /*currentCharacters[0].characterCamera.enabled = true;
         currentCharacters[0].GetComponent<PlayerControllerT>().enabled = true;
         startingCharacter = currentCharacters[0];*/
@@ -143,10 +148,11 @@ public class GameControllerK : MonoBehaviour//Singleton<GameController>
 
     private static void NextPlayer()
     {
-        playingCharacterListIndex++;
-        playingCharacterListIndex %= playerCount; //So that always stays in the Lists limits. Rotates through list.
-        playingCharacter = currentCharacters[playingCharacterListIndex];
-        playingCharacter.GetComponent<Camera>().enabled = true;
+        //playingCharacterIndex = (playingCharacterIndex + 1) % playerCount;
+        playingCharacterIndex++;
+        playingCharacterIndex %= playerCount; //So that always stays in the Lists limits. Rotates through list.
+        currentCharacter = currentCharacters[playingCharacterIndex];
+        currentCharacter.GetComponent<Camera>().enabled = true;
     }
 
     public TileT GetTileByName(Enums.Tiles nameToFind)

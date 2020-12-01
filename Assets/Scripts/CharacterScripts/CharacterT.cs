@@ -29,17 +29,19 @@ public class CharacterT : MonoBehaviour
 
     public virtual void Start()
     {
-        characterCamera = GetComponent<Camera>();
+        characterCamera = GetComponentInChildren<Camera>();
     }
 
     public void OnCollisionEnter(Collision other)
     {
         Debug.Log("ELA TO COLLISION!!!");
         TileT tileTouched = other.gameObject.GetComponent<TileT>();
-        if (tileTouched.tileName != currentTile.tileName)
+        if (tileTouched!=null && tileTouched != currentTile)
         {
             currentTile = tileTouched;
             ActionMade(tileTouched);
+            Debug.Log("peos"+currentTile.tileName);
+
         }
     }
 
@@ -61,8 +63,9 @@ public class CharacterT : MonoBehaviour
         actionsLeft = 3;
     }
 
-    internal void SetCurrentTile(TileT tileToSet)
+    public void SetCurrentTile(TileT tileToSet)
     {
         currentTile = tileToSet;
+        Debug.Log("currentTile: "+currentTile);
     }
 }
