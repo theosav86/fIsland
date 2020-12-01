@@ -23,7 +23,7 @@ public class GameController : MonoBehaviour//Singleton<GameController>
 
     private List<TileT> playBoard;
 
-    private List<CharacterT> playCharacters;
+    private List<GameObject> playCharacters;
 
     private CharacterT startingCharacter;
 
@@ -32,18 +32,17 @@ public class GameController : MonoBehaviour//Singleton<GameController>
     public int playerCount = 6;
 
     [SerializeField]
-    public List<CharacterT> characters;
+    public List<GameObject> characters;
 
     private void Start()
     {
-        playCharacters = new List<CharacterT>();
+        playCharacters = new List<GameObject>();
 
         randomBoard = new List<GameObject>(ShuffleList(tiles));
         
         playBoard = new List<TileT>(GenerateBoard(currentLayout));
 
         SpawnCharacters();
-
     }
 
 
@@ -51,19 +50,27 @@ public class GameController : MonoBehaviour//Singleton<GameController>
     {
         for (int j = 0; j < characters.Count; j++)
         {
-            TileT tileToSpawnChar = GetTileByName(characters[j].startingTile);
-            CharacterT characterToSpawn = Instantiate(characters[j], tileToSpawnChar.currentPosition, Quaternion.identity);
-            //characterToSpawn.characterCamera.enabled = false;
+            TileT tileToSpawnChar = GetTileByName(characters[j].GetComponent<CharacterT>().startingTile);            
+            
+
+            GameObject characterToSpawn = Instantiate(characters[j], tileToSpawnChar.currentPosition, Quaternion.identity);
+
+            characterToSpawn.GetComponentInChildren<Camera>().enabled = false;
+            characterToSpawn.GetComponent<PlayerControllerT>().enabled = false;
+
             playCharacters.Add(characterToSpawn);
-
-
         }
         //by kmell[
         //}
         //]bykmell
+
         int playCharacterIndex = Random.Range(0, characters.Count);
-        playCharacters[playCharacterIndex].characterCamera.enabled = true;
-        startingCharacter = playCharacters[playCharacterIndex];
+
+        playCharacters[playCharacterIndex].GetComponentInChildren<Camera>().enabled = true;
+        playCharacters[playCharacterIndex].GetComponent<PlayerControllerT>().enabled = false;
+        
+        //startingCharacter is CharacterT but playCharacters etc are GameObject
+        startingCharacter = playCharacters[playCharacterIndex].GetComponent<CharacterT>();
     }
     
 

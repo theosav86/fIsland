@@ -7,6 +7,7 @@ public class CharacterT : MonoBehaviour
 {
     #region VARIABLES
 
+    [HideInInspector]
     public Camera characterCamera;
 
     public Enums.Role activeRole;
@@ -27,7 +28,7 @@ public class CharacterT : MonoBehaviour
 
     #endregion
 
-    public virtual void Start()
+    private void Start()
     {
         characterCamera = GetComponentInChildren<Camera>();
     }

@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1755493424795292608}
   - component: {fileID: 1755493424795292609}
+  - component: {fileID: 544309621227207879}
   - component: {fileID: 1755493424795292611}
   - component: {fileID: 1755493424795292610}
   m_Layer: 0
@@ -50,6 +51,25 @@ MonoBehaviour:
   moveSpeed: 250
   jumpForce: 5
   isJumping: 0
+--- !u!114 &544309621227207879
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1755493424795292607}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8661bdd0974c72448df03dd2afd4163, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterCamera: {fileID: 0}
+  activeRole: 0
+  startingTile: 0
+  playerColor: {r: 0, g: 0, b: 0, a: 0}
+  totalActions: 3
+  movementRange: 1
+  currentTile: {fileID: 0}
 --- !u!54 &1755493424795292611
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -175,7 +195,7 @@ GameObject:
   - component: {fileID: 1755493425617249967}
   - component: {fileID: 648725549}
   m_Layer: 0
-  m_Name: Main Camera
+  m_Name: CharacterCamera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

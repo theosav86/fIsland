@@ -45,11 +45,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameState: 0
   characterTurn: 4
+  currentLayout: 0
+  tiles: []
+  crossLayout: []
   playerCount: 6
   characters:
-  - {fileID: 8962629624848748963, guid: 877dd32f2363f2546af1a3e05f984666, type: 3}
-  - {fileID: 2597676262899902856, guid: e577e118ae2a84346b6e639ba9b2d7ab, type: 3}
-  - {fileID: 5471916870324712714, guid: 44d78a100900d6348a29904205e70f4d, type: 3}
-  - {fileID: 4109644335894153626, guid: a542e797e12ae9845b325bf70ef760f6, type: 3}
-  - {fileID: 799215029703753821, guid: da0ac6645b26cbe408807a6eebfa2639, type: 3}
-  - {fileID: 122309001, guid: d2ea6806ab2850f489240828c58d01f8, type: 3}
+  - {fileID: 7166092741471221969, guid: 877dd32f2363f2546af1a3e05f984666, type: 3}
+  - {fileID: 6050230702892857393, guid: e577e118ae2a84346b6e639ba9b2d7ab, type: 3}
+  - {fileID: 747097283172630699, guid: 44d78a100900d6348a29904205e70f4d, type: 3}
+  - {fileID: 8462365626948807419, guid: a542e797e12ae9845b325bf70ef760f6, type: 3}
+  - {fileID: 5483824800196674662, guid: da0ac6645b26cbe408807a6eebfa2639, type: 3}
+  - {fileID: 7412478775129057679, guid: d2ea6806ab2850f489240828c58d01f8, type: 3}
