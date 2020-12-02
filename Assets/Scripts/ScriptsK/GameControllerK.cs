@@ -5,80 +5,82 @@ using UnityEngine;
 public class GameControllerK : MonoBehaviour//Singleton<GameController>
 {
     public Enums.GameState gameState = Enums.GameState.PLAYER_TURN;
-
+    private bool isSwitcingPlayer = false;
     public Enums.Role characterTurn = Enums.Role.MESSENGER;
 
     public Enums.LayoutName currentLayout = Enums.LayoutName.CROSS;
 
     [Header("Terrain Tiles")]
     [Tooltip("Insert the tile prefabs here")]
-    [SerializeField]
     public List<TileT> allTiles;
 
     [Header("Terrain Layouts")]
     [Tooltip("Various Terrain Layouts")]
     public Transform[] crossLayout;
 
+    [Header("All Characters")]
+    [Tooltip("Insert Characters prefabs here")]
+    public List<Transform> allPlayableCharacters_pf;
+
     private List<TileT> currentBoardTiles;
 
-    private static List<CharacterT> currentCharacters;
-    private static int playingCharacterIndex;
+    public List<Transform> currentGameCharacters_pf;
+    public static List<CharacterT> currentGameCharacters = new List<CharacterT>();
 
-    private static CharacterT currentCharacter;
+    private int playingCharacterIndex;
 
-    [Range(1, 6)]
+    private CharacterT currentCharacter;
+    private CharacterT previousCharacter;
+
     [Tooltip("How many players will join")]
-    public static int playerCount = 6;
+    public int playerCount = 6;
 
-    [SerializeField]
-    public List<CharacterT> allCharacters;
+    private static GameControllerK instance;
+    public static GameControllerK GetInstance(){
+        return instance;
+    }
+    private void Awake()
+    {
+        instance = this;
+    }
 
-    
+
 
     private void Start()
     {
-        LoadCharacters(playerCount);
-
         GenerateBoard(Enums.LayoutName.CROSS);
 
-        SpawnCharacters();
+        SpawnCharacters(playerCount);
 
+        currentCharacter.SetActive();
     }
 
-    private void LoadCharacters(int numOfPlayers)
+    private void SpawnCharacters(int numOfPlayers)
     {
+        //Set List with current game's playing characters
         if (numOfPlayers == 0)
         {
-            numOfPlayers = Random.Range(2, allCharacters.Count);
+            numOfPlayers = Random.Range(2, 7);
         }
-        currentCharacters = ShuffleList(allCharacters).GetRange(0, numOfPlayers);
-        
-    }
+        Debug.Log("numberof players: " + numOfPlayers);
+        currentGameCharacters_pf = ShuffleList(allPlayableCharacters_pf).GetRange(0, numOfPlayers);
 
-    private void SpawnCharacters()
-    {
-        for (int i=0; i<currentCharacters.Count; i++)// each (CharacterT charToSpawn in currentCharacters)
+        //Get Character scripts adn instantiate
+        for (int i = 0; i < currentGameCharacters_pf.Count; i++)
         {
-            TileT tileToSpawnChar = GetTileByName(currentCharacters[i].startingTile);
+            TileT tileToSpawnChar = GetTileByName(currentGameCharacters_pf[i].GetComponent<CharacterT>().startingTile);
+            currentGameCharacters_pf[i] = Instantiate(currentGameCharacters_pf[i], tileToSpawnChar.currentPosition, Quaternion.identity);
 
-            currentCharacters[i] = Instantiate(currentCharacters[i], tileToSpawnChar.currentPosition, Quaternion.identity);
-
-
-            currentCharacters[i].currentTile = tileToSpawnChar;//SetCurrentTile(tileToSpawnChar);
-
-            currentCharacters[i].GetComponent<PlayerControllerT>().enabled = false;
-            currentCharacters[i].characterCamera.enabled = false;
-            //charToSpawn.GetComponent<MouseLookT>().enabled = false;
+            currentGameCharacters.Add(currentGameCharacters_pf[i].GetComponent<CharacterT>());
+            currentGameCharacters[i].currentTile = tileToSpawnChar;
+            currentGameCharacters[i].SetInactive();
         }
 
-        currentCharacter = currentCharacters[0];
-        currentCharacter.characterCamera.enabled = true;
-        currentCharacter.GetComponent<PlayerControllerT>().enabled = true;
-        //currentCharacter.GetComponent<MouseLookT>().enabled = true;
-        playingCharacterIndex = 0;//currentCharacters.IndexOf(currentCharacter);
-        /*currentCharacters[0].characterCamera.enabled = true;
-        currentCharacters[0].GetComponent<PlayerControllerT>().enabled = true;
-        startingCharacter = currentCharacters[0];*/
+
+        //Begin playing with first player:
+        currentCharacter = currentGameCharacters[0];
+        //currentCharacter.SetActive();
+        playingCharacterIndex = 0;//currentGameCharacters.IndexOf(currentCharacter);
     }
     
 
@@ -140,19 +142,39 @@ public class GameControllerK : MonoBehaviour//Singleton<GameController>
         }
     }
 
-    internal static void PlayerTurnEnded(CharacterT character)
+    internal void  PlayerTurnEnded(CharacterT character)
     {
-        character.GetComponent<Camera>().enabled = false;
+        //character.SetInactive();
+        previousCharacter = currentCharacter;
         NextPlayer();
     }
 
-    private static void NextPlayer()
+    private void NextPlayer()
     {
+        CharacterT previousCharacter = currentCharacter;
+
         //playingCharacterIndex = (playingCharacterIndex + 1) % playerCount;
         playingCharacterIndex++;
-        playingCharacterIndex %= playerCount; //So that always stays in the Lists limits. Rotates through list.
-        currentCharacter = currentCharacters[playingCharacterIndex];
-        currentCharacter.GetComponent<Camera>().enabled = true;
+        if (playingCharacterIndex == playerCount)
+            playingCharacterIndex = 0;
+        //playingCharacterIndex %= playerCount; //So that always stays in the Lists limits. Rotates through list.
+       currentCharacter = currentGameCharacters[playingCharacterIndex];
+        
+        /*apopeira na kanw transition tin kamera
+        Vector3 previousCameraPos = previousCharacter.GetComponentInChildren<Camera>().transform.position;
+        Vector3 currentCameraPos = currentCharacter.GetComponentInChildren<Camera>().transform.position;
+        isSwitcingPlayer = true;
+
+        while (isSwitcingPlayer)
+        {
+            previousCharacter.GetComponentInChildren<Camera>().transform.position = Vector3.Lerp(previousCameraPos, currentCameraPos, Time.deltaTime);
+            if (previousCharacter.GetComponentInChildren<Camera>().transform.position == currentCameraPos)
+                isSwitcingPlayer = false;
+        }
+        */
+        previousCharacter.SetInactive();
+        //previousCharacter.GetComponentInChildren<Camera>().transform.position = previousCameraPos;
+        currentCharacter.SetActive();
     }
 
     public TileT GetTileByName(Enums.Tiles nameToFind)
@@ -168,7 +190,7 @@ public class GameControllerK : MonoBehaviour//Singleton<GameController>
 
     public CharacterT GetCharByName(Enums.Role nameToFind)
     {
-        foreach (CharacterT checkChar in currentCharacters)
+        foreach (CharacterT checkChar in currentGameCharacters)
         {
             if (checkChar.activeRole== nameToFind)
                 return checkChar;

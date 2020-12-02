@@ -300,34 +300,57 @@ MonoBehaviour:
   gameState: 0
   characterTurn: 4
   currentLayout: 0
-  tiles:
-  - {fileID: 4205925361954422639, guid: 5a5380dc03163f1469c9b7722ee71e04, type: 3}
-  - {fileID: 8944660080268259415, guid: 4ca960f78e6d626488c16895cd672421, type: 3}
-  - {fileID: 252479403227049663, guid: 75f9c9aa8bd8da4469e7871153c00cfa, type: 3}
-  - {fileID: 1789208596719220892, guid: 37fefb7405ae307458f93c20dd494593, type: 3}
-  - {fileID: 2844764629300900622, guid: 654a57ef0e959fb42a13edae74d42add, type: 3}
-  - {fileID: 8875502102145568429, guid: abddb0174607b7440bc2fd3b959eec6f, type: 3}
-  - {fileID: 4674096721021086474, guid: 269210a08badf4e4194806e45e247945, type: 3}
-  - {fileID: 6701710833588270060, guid: cdc8cea11919d3543a6363256b137b8f, type: 3}
-  - {fileID: 4539282325625734324, guid: 7a20b3ceb0b72da4fb1df2760ff30d8f, type: 3}
-  - {fileID: 8538839623942622927, guid: 846a75d5056f2de44849cc094d7f05d7, type: 3}
-  - {fileID: 8855663026542908159, guid: 245964082e5f5b142a4519cb7ba7ba4d, type: 3}
-  - {fileID: 5109539125973795711, guid: 838ba62c6b6b89449925c4e3b59faa00, type: 3}
-  - {fileID: 9149165325358850590, guid: c00f78f5b92b4c742a33b519bf07623b, type: 3}
-  - {fileID: 6633597891864799057, guid: 49a7a01ca83d569499bcb77eba0893e3, type: 3}
-  - {fileID: 917156797677309394, guid: 89854be4cd6bef745969c751462913e5, type: 3}
-  - {fileID: 7317783375514348353, guid: 54a268d52bd083641af98ceae7f25b89, type: 3}
-  - {fileID: 6461484119956521972, guid: 49e701983ea54b0408965d18afdcbf42, type: 3}
-  - {fileID: 3837686036637984380, guid: 03861104a2a96d44b9ca57455dbe4928, type: 3}
-  - {fileID: 3297120101347715407, guid: 5df6d1138505e09448b88b4fcc0a1557, type: 3}
-  - {fileID: 5707259971229381553, guid: 54d75f02269185f4681c3c124f2161bd, type: 3}
-  - {fileID: 717359792476635713, guid: c37dbd47e2cfe88468e4649883e5027d, type: 3}
-  - {fileID: 758798176193274117, guid: 2a723ca9dd647a64f859a453668e9af2, type: 3}
-  - {fileID: 1624791697585040649, guid: 3832e761cb125cd44aab2a6ed986dc16, type: 3}
-  - {fileID: 930353572059840996, guid: 46dd2cffb9f001b4794025ed773ed05d, type: 3}
-  crossLayout: []
-  playerCount: 6
-  characters:
+  allTiles:
+  - {fileID: 5217915212431556903, guid: 5a5380dc03163f1469c9b7722ee71e04, type: 3}
+  - {fileID: 1015104437767622175, guid: 4ca960f78e6d626488c16895cd672421, type: 3}
+  - {fileID: 8194101909087129847, guid: 75f9c9aa8bd8da4469e7871153c00cfa, type: 3}
+  - {fileID: 7702065025779254996, guid: 37fefb7405ae307458f93c20dd494593, type: 3}
+  - {fileID: 6146589630484254022, guid: 654a57ef0e959fb42a13edae74d42add, type: 3}
+  - {fileID: 656310359485903077, guid: abddb0174607b7440bc2fd3b959eec6f, type: 3}
+  - {fileID: 3668756787802789186, guid: 269210a08badf4e4194806e45e247945, type: 3}
+  - {fileID: 3402173297425911204, guid: cdc8cea11919d3543a6363256b137b8f, type: 3}
+  - {fileID: 5533083161001458428, guid: 7a20b3ceb0b72da4fb1df2760ff30d8f, type: 3}
+  - {fileID: 339948714157092999, guid: 846a75d5056f2de44849cc094d7f05d7, type: 3}
+  - {fileID: 635590779014278327, guid: 245964082e5f5b142a4519cb7ba7ba4d, type: 3}
+  - {fileID: 3809774990244363575, guid: 838ba62c6b6b89449925c4e3b59faa00, type: 3}
+  - {fileID: 923217633235147862, guid: c00f78f5b92b4c742a33b519bf07623b, type: 3}
+  - {fileID: 3330683274995423513, guid: 49a7a01ca83d569499bcb77eba0893e3, type: 3}
+  - {fileID: 9119179943495496602, guid: 89854be4cd6bef745969c751462913e5, type: 3}
+  - {fileID: 1709764620908287241, guid: 54a268d52bd083641af98ceae7f25b89, type: 3}
+  - {fileID: 3142524606256545212, guid: 49e701983ea54b0408965d18afdcbf42, type: 3}
+  - {fileID: 5149166842950375476, guid: 03861104a2a96d44b9ca57455dbe4928, type: 3}
+  - {fileID: 6914724908869031687, guid: 5df6d1138505e09448b88b4fcc0a1557, type: 3}
+  - {fileID: 4396624141548031481, guid: 54d75f02269185f4681c3c124f2161bd, type: 3}
+  - {fileID: 8918009098045864969, guid: c37dbd47e2cfe88468e4649883e5027d, type: 3}
+  - {fileID: 8696585036343320397, guid: 2a723ca9dd647a64f859a453668e9af2, type: 3}
+  - {fileID: 7258636672978457409, guid: 3832e761cb125cd44aab2a6ed986dc16, type: 3}
+  - {fileID: 9142016205239549868, guid: 46dd2cffb9f001b4794025ed773ed05d, type: 3}
+  crossLayout:
+  - {fileID: 1717330309}
+  - {fileID: 1951859112}
+  - {fileID: 2030519135}
+  - {fileID: 1171414972}
+  - {fileID: 1099745544}
+  - {fileID: 1600134337}
+  - {fileID: 1720400647}
+  - {fileID: 78489261}
+  - {fileID: 1303361474}
+  - {fileID: 1878910874}
+  - {fileID: 1451028331}
+  - {fileID: 337119202}
+  - {fileID: 362101036}
+  - {fileID: 696270277}
+  - {fileID: 1096454059}
+  - {fileID: 373887225}
+  - {fileID: 1453314326}
+  - {fileID: 2101600091}
+  - {fileID: 1653650093}
+  - {fileID: 817850790}
+  - {fileID: 197645588}
+  - {fileID: 103095077}
+  - {fileID: 955280750}
+  - {fileID: 955280750}
+  allCharacters:
   - {fileID: 8962629624848748963, guid: 877dd32f2363f2546af1a3e05f984666, type: 3}
   - {fileID: 2597676262899902856, guid: e577e118ae2a84346b6e639ba9b2d7ab, type: 3}
   - {fileID: 5471916870324712714, guid: 44d78a100900d6348a29904205e70f4d, type: 3}
@@ -398,7 +421,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4311749310968968491, guid: d4287816aa6a402478461775350ab170, type: 3}
       propertyPath: m_Name
-      value: GameController
+      value: GameControllerk
       objectReference: {fileID: 0}
     - target: {fileID: 4311749310968968492, guid: d4287816aa6a402478461775350ab170, type: 3}
       propertyPath: m_LocalPosition.x

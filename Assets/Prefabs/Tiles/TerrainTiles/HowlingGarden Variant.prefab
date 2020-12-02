@@ -1,5 +1,21 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!54 &2448681711377173066
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5109539125973795711}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1001 &3809774990846385264
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14,6 +30,14 @@ PrefabInstance:
     - target: {fileID: 1816027463, guid: face479d6413c494da4be49dc905a849, type: 3}
       propertyPath: tileName
       value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 1816027463, guid: face479d6413c494da4be49dc905a849, type: 3}
+      propertyPath: currentPosition.x
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1816027463, guid: face479d6413c494da4be49dc905a849, type: 3}
+      propertyPath: currentPosition.z
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 8230241355363786510, guid: face479d6413c494da4be49dc905a849, type: 3}
       propertyPath: m_LocalPosition.x
@@ -61,7 +85,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8230241355363786511, guid: face479d6413c494da4be49dc905a849, type: 3}
       propertyPath: m_Name
-      value: HowlingGarden
+      value: HowlingGarden Variant
       objectReference: {fileID: 0}
     - target: {fileID: 8230241355643199527, guid: face479d6413c494da4be49dc905a849, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -69,3 +93,8 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 23bb2c05a2f4f54409ddb0a3bbd327b2, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: face479d6413c494da4be49dc905a849, type: 3}
+--- !u!1 &5109539125973795711 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8230241355363786511, guid: face479d6413c494da4be49dc905a849, type: 3}
+  m_PrefabInstance: {fileID: 3809774990846385264}
+  m_PrefabAsset: {fileID: 0}

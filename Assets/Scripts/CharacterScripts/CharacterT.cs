@@ -15,6 +15,7 @@ public class CharacterT : MonoBehaviour
     public Enums.Tiles startingTile;
 
     public Color playerColor;
+    private bool isActivePlayer = false;
 
     public int totalActions = 3;
     private int actionsLeft = 3;
@@ -25,24 +26,28 @@ public class CharacterT : MonoBehaviour
 
     public TileT currentTile;
 
+    private GameControllerK gameController;
 
     #endregion
 
     private void Start()
     {
         characterCamera = GetComponentInChildren<Camera>();
+        gameController = GameControllerK.GetInstance();
     }
 
     public void OnCollisionEnter(Collision other)
     {
-        Debug.Log("ELA TO COLLISION!!!");
-        TileT tileTouched = other.gameObject.GetComponent<TileT>();
-        if (tileTouched!=null && tileTouched != currentTile)
+        if (isActivePlayer)
         {
-            currentTile = tileTouched;
-            ActionMade(tileTouched);
-            Debug.Log("peos"+currentTile.tileName);
-
+            TileT tileTouched = other.gameObject.GetComponent<TileT>();
+            Debug.Log("ELA TO COLLISION!!! sto " + tileTouched.tileName);
+            if (tileTouched != null && tileTouched != currentTile)
+            {
+                Debug.Log("peos" + currentTile.tileName);
+                currentTile = tileTouched;
+                ActionMade(tileTouched);
+            }
         }
     }
 
@@ -54,13 +59,13 @@ public class CharacterT : MonoBehaviour
             return;
         }
         actionsLeft--;
-        Debug.Log("Action Made! Left: ");
         
     }
 
     private void endTurn()
     {
-        GameControllerK.PlayerTurnEnded(this);
+        //TODO na pairnw to reference to gameControllerK apo tin kalsi tou gia na min einai static
+        gameController.PlayerTurnEnded(this);
         actionsLeft = 3;
     }
 
@@ -68,5 +73,20 @@ public class CharacterT : MonoBehaviour
     {
         currentTile = tileToSet;
         Debug.Log("currentTile: "+currentTile);
+    }
+
+    public void SetActive()
+    {
+        GetComponent<PlayerControllerT>().enabled = true;
+        GetComponentInChildren<Camera>().enabled = true;
+        GetComponentInChildren<MouseLookT>().enabled = true;
+        isActivePlayer = true;
+    }
+    public void SetInactive()
+    {
+        GetComponent<PlayerControllerT>().enabled = false;
+        GetComponentInChildren<Camera>().enabled = false;
+        GetComponentInChildren<MouseLookT>().enabled = false;
+        isActivePlayer = false;
     }
 }
